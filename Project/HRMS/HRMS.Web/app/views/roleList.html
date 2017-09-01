@@ -1,0 +1,30 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>ROLE LIST</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Settings / Roles / Role List
+        </div>
+    </div>
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead class="tableHeader">
+                <tr>
+                    <th><a href="" ng-click="columnName='RoleID'">Role ID</a></th>
+                    <th><a href="" ng-click="columnName='Name'">Role Name</a></th>
+                </tr>
+            </thead>
+            <tbody class="tableBody">
+                <tr data-ng-repeat="x in roleListData | orderBy:columnName" data-ng-dblclick="selectObject(x)">
+
+                    <td>{{x.RoleID}}</td>
+                    <td>{{x.Name}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

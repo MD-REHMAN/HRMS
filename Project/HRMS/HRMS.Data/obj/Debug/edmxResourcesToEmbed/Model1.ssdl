@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CompanyBranch">
+    <Key>
+      <PropertyRef Name="CompanyBranchID" />
+    </Key>
+    <Property Name="CompanyBranchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeaveRequest">
+    <Key>
+      <PropertyRef Name="LeaveRequestID" />
+    </Key>
+    <Property Name="LeaveRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LeaveTypeID" Type="int" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateFrom" Type="datetime" Nullable="false" />
+    <Property Name="NumberOfDays" Type="int" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeaveType">
+    <Key>
+      <PropertyRef Name="LeaveTypeID" />
+    </Key>
+    <Property Name="LeaveTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PerMonthLeave" Type="int" />
+    <Property Name="PerAnnumLeave" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaySlip">
+    <Key>
+      <PropertyRef Name="PaySlipID" />
+    </Key>
+    <Property Name="PaySlipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PayDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="TotalSalary" Type="money" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalaryComponent">
+    <Key>
+      <PropertyRef Name="SalaryComponentID" />
+    </Key>
+    <Property Name="SalaryComponentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsIncremental" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalaryComponentAmount">
+    <Key>
+      <PropertyRef Name="SalaryComponentAmountID" />
+    </Key>
+    <Property Name="SalaryComponentAmountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaySlipID" Type="int" Nullable="false" />
+    <Property Name="SalaryComponentID" Type="int" Nullable="false" />
+    <Property Name="EmployeeAmount" Type="money" />
+    <Property Name="EmployerAmount" Type="money" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="64" />
+    <Property Name="AdhaarNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="PanNumber" Type="nvarchar" MaxLength="256" />
+    <Property Name="BankAccountNumber" Type="nvarchar" MaxLength="64" />
+    <Property Name="ProvidentFundNumber" Type="nvarchar" MaxLength="64" />
+    <Property Name="EsicNumber" Type="nvarchar" MaxLength="64" />
+    <Property Name="DateOfJoining" Type="datetime" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="DateOfLeaving" Type="datetime" />
+    <Property Name="CompanyBranchID" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="UserDepartment">
+    <Key>
+      <PropertyRef Name="UserDepartmentID" />
+    </Key>
+    <Property Name="UserDepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="DepartmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="UserLeave">
+    <Key>
+      <PropertyRef Name="UserLeaveID" />
+    </Key>
+    <Property Name="UserLeaveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="LeaveTypeID" Type="int" Nullable="false" />
+    <Property Name="NumberOfLeave" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleID" />
+    </Key>
+    <Property Name="UserRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="RoleID" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Association Name="FK__Departmen__Creat__1B0907CE">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Departmen__Updat__1BFD2C07">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LeaveRequ__Appro__628FA481">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="LeaveRequest" Type="Self.LeaveRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="LeaveRequest">
+        <PropertyRef Name="ApprovedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LeaveRequ__Creat__60A75C0F">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="LeaveRequest" Type="Self.LeaveRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="LeaveRequest">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LeaveRequ__Leave__6383C8BA">
+    <End Role="LeaveType" Type="Self.LeaveType" Multiplicity="1" />
+    <End Role="LeaveRequest" Type="Self.LeaveRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LeaveType">
+        <PropertyRef Name="LeaveTypeID" />
+      </Principal>
+      <Dependent Role="LeaveRequest">
+        <PropertyRef Name="LeaveTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LeaveRequ__Updat__619B8048">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="LeaveRequest" Type="Self.LeaveRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="LeaveRequest">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LeaveType__Creat__5CD6CB2B">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="LeaveType" Type="Self.LeaveType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="LeaveType">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LeaveType__Updat__5DCAEF64">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="LeaveType" Type="Self.LeaveType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="LeaveType">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaySlip__Created__267ABA7A">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="PaySlip" Type="Self.PaySlip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PaySlip">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaySlip__Updated__276EDEB3">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="PaySlip" Type="Self.PaySlip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PaySlip">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaySlip__UserID__48CFD27E">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="PaySlip" Type="Self.PaySlip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PaySlip">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalaryCom__Creat__22AA2996">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SalaryComponent" Type="Self.SalaryComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SalaryComponent">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalaryCom__Creat__2C3393D0">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SalaryComponentAmount" Type="Self.SalaryComponentAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SalaryComponentAmount">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalaryCom__PaySl__2A4B4B5E">
+    <End Role="PaySlip" Type="Self.PaySlip" Multiplicity="1" />
+    <End Role="SalaryComponentAmount" Type="Self.SalaryComponentAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaySlip">
+        <PropertyRef Name="PaySlipID" />
+      </Principal>
+      <Dependent Role="SalaryComponentAmount">
+        <PropertyRef Name="PaySlipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalaryCom__Salar__2B3F6F97">
+    <End Role="SalaryComponent" Type="Self.SalaryComponent" Multiplicity="1" />
+    <End Role="SalaryComponentAmount" Type="Self.SalaryComponentAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalaryComponent">
+        <PropertyRef Name="SalaryComponentID" />
+      </Principal>
+      <Dependent Role="SalaryComponentAmount">
+        <PropertyRef Name="SalaryComponentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalaryCom__Updat__239E4DCF">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SalaryComponent" Type="Self.SalaryComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SalaryComponent">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalaryCom__Updat__2D27B809">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SalaryComponentAmount" Type="Self.SalaryComponentAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SalaryComponentAmount">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__CompanyBra__145C0A3F">
+    <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyBranch">
+        <PropertyRef Name="CompanyBranchID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CompanyBranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserDepar__Depar__3B75D760">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="UserDepartment" Type="Self.UserDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="UserDepartment">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserDepar__UserI__3A81B327">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserDepartment" Type="Self.UserDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserDepartment">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLeave__Leave__6754599E">
+    <End Role="LeaveType" Type="Self.LeaveType" Multiplicity="1" />
+    <End Role="UserLeave" Type="Self.UserLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LeaveType">
+        <PropertyRef Name="LeaveTypeID" />
+      </Principal>
+      <Dependent Role="UserLeave">
+        <PropertyRef Name="LeaveTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLeave__UserI__66603565">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserLeave" Type="Self.UserLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserLeave">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRole__RoleID__37A5467C">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRole__UserID__36B12243">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HRMSModelStoreContainer">
+    <EntitySet Name="CompanyBranch" EntityType="Self.CompanyBranch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveRequest" EntityType="Self.LeaveRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveType" EntityType="Self.LeaveType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaySlip" EntityType="Self.PaySlip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryComponent" EntityType="Self.SalaryComponent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryComponentAmount" EntityType="Self.SalaryComponentAmount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDepartment" EntityType="Self.UserDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLeave" EntityType="Self.UserLeave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Departmen__Creat__1B0907CE" Association="Self.FK__Departmen__Creat__1B0907CE">
+      <End Role="User" EntitySet="User" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Departmen__Updat__1BFD2C07" Association="Self.FK__Departmen__Updat__1BFD2C07">
+      <End Role="User" EntitySet="User" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LeaveRequ__Appro__628FA481" Association="Self.FK__LeaveRequ__Appro__628FA481">
+      <End Role="User" EntitySet="User" />
+      <End Role="LeaveRequest" EntitySet="LeaveRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LeaveRequ__Creat__60A75C0F" Association="Self.FK__LeaveRequ__Creat__60A75C0F">
+      <End Role="User" EntitySet="User" />
+      <End Role="LeaveRequest" EntitySet="LeaveRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LeaveRequ__Leave__6383C8BA" Association="Self.FK__LeaveRequ__Leave__6383C8BA">
+      <End Role="LeaveType" EntitySet="LeaveType" />
+      <End Role="LeaveRequest" EntitySet="LeaveRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LeaveRequ__Updat__619B8048" Association="Self.FK__LeaveRequ__Updat__619B8048">
+      <End Role="User" EntitySet="User" />
+      <End Role="LeaveRequest" EntitySet="LeaveRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LeaveType__Creat__5CD6CB2B" Association="Self.FK__LeaveType__Creat__5CD6CB2B">
+      <End Role="User" EntitySet="User" />
+      <End Role="LeaveType" EntitySet="LeaveType" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LeaveType__Updat__5DCAEF64" Association="Self.FK__LeaveType__Updat__5DCAEF64">
+      <End Role="User" EntitySet="User" />
+      <End Role="LeaveType" EntitySet="LeaveType" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaySlip__Created__267ABA7A" Association="Self.FK__PaySlip__Created__267ABA7A">
+      <End Role="User" EntitySet="User" />
+      <End Role="PaySlip" EntitySet="PaySlip" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaySlip__Updated__276EDEB3" Association="Self.FK__PaySlip__Updated__276EDEB3">
+      <End Role="User" EntitySet="User" />
+      <End Role="PaySlip" EntitySet="PaySlip" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaySlip__UserID__48CFD27E" Association="Self.FK__PaySlip__UserID__48CFD27E">
+      <End Role="User" EntitySet="User" />
+      <End Role="PaySlip" EntitySet="PaySlip" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalaryCom__Creat__22AA2996" Association="Self.FK__SalaryCom__Creat__22AA2996">
+      <End Role="User" EntitySet="User" />
+      <End Role="SalaryComponent" EntitySet="SalaryComponent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalaryCom__Creat__2C3393D0" Association="Self.FK__SalaryCom__Creat__2C3393D0">
+      <End Role="User" EntitySet="User" />
+      <End Role="SalaryComponentAmount" EntitySet="SalaryComponentAmount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalaryCom__PaySl__2A4B4B5E" Association="Self.FK__SalaryCom__PaySl__2A4B4B5E">
+      <End Role="PaySlip" EntitySet="PaySlip" />
+      <End Role="SalaryComponentAmount" EntitySet="SalaryComponentAmount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalaryCom__Salar__2B3F6F97" Association="Self.FK__SalaryCom__Salar__2B3F6F97">
+      <End Role="SalaryComponent" EntitySet="SalaryComponent" />
+      <End Role="SalaryComponentAmount" EntitySet="SalaryComponentAmount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalaryCom__Updat__239E4DCF" Association="Self.FK__SalaryCom__Updat__239E4DCF">
+      <End Role="User" EntitySet="User" />
+      <End Role="SalaryComponent" EntitySet="SalaryComponent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalaryCom__Updat__2D27B809" Association="Self.FK__SalaryCom__Updat__2D27B809">
+      <End Role="User" EntitySet="User" />
+      <End Role="SalaryComponentAmount" EntitySet="SalaryComponentAmount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__CompanyBra__145C0A3F" Association="Self.FK__User__CompanyBra__145C0A3F">
+      <End Role="CompanyBranch" EntitySet="CompanyBranch" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserDepar__Depar__3B75D760" Association="Self.FK__UserDepar__Depar__3B75D760">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="UserDepartment" EntitySet="UserDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserDepar__UserI__3A81B327" Association="Self.FK__UserDepar__UserI__3A81B327">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserDepartment" EntitySet="UserDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLeave__Leave__6754599E" Association="Self.FK__UserLeave__Leave__6754599E">
+      <End Role="LeaveType" EntitySet="LeaveType" />
+      <End Role="UserLeave" EntitySet="UserLeave" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLeave__UserI__66603565" Association="Self.FK__UserLeave__UserI__66603565">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLeave" EntitySet="UserLeave" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRole__RoleID__37A5467C" Association="Self.FK__UserRole__RoleID__37A5467C">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRole__UserID__36B12243" Association="Self.FK__UserRole__UserID__36B12243">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

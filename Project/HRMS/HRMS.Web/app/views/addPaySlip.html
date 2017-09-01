@@ -1,0 +1,86 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>GENERATE PAYSLIP</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Generate PaySlip
+        </div>
+    </div>
+    <hr />
+
+    <div class="panel panel-default panelBorder">
+
+
+        <form class="form-horizontal" ng-submit="addPaySlip()">
+            <div class="panel-heading panelHeader">
+                <strong>Payslip Details</strong>
+            </div>
+            <div class="panel-body panelBody">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">User:*</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" ng-model="addPaySlipModel.UserID" required="required">
+                                            <option data-ng-repeat="x in userData" value={{x.UserID}}>{{x.FirstName}} {{x.MidleName}} {{x.LastName}}</option>
+                                        </select><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div class="col-md-6">
+                                <table class="table table-bordered">
+                                    <thead class="tableHeader">
+                                        <tr>
+                                            <th class="text-center" colspan="2">EARNINGS</th>
+                                        </tr>
+                                        <tr>
+                                            <th><a href="" ng-click="columnName='Name'">Name</a></th>
+                                            <th><a href="" ng-click="columnName='Amount'">Amount</a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="panelBody">
+                                        <tr data-ng-repeat="x in salaryComponentData" data-ng-if="x.IsIncremental == true">
+                                            <td>{{x.Name}}<span ng-hide="true">{{addSalaryComponentAmountModel[$index].SalaryComponentID = x.SalaryComponentID}}</span></td>
+                                            <td><input type="text" data-ng-model="addSalaryComponentAmountModel[$index].Amount" required="required" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-bordered">
+                                    <thead class="tableHeader">
+                                        <tr>
+                                            <th class="text-center" colspan="2">DEDUCTIONS</th>
+                                        </tr>
+                                        <tr>
+                                            <th><a href="" ng-click="columnName='Name'">Name</a></th>
+                                            <th><a href="" ng-click="columnName='Amount'">Amount</a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="panelBody">
+                                        <tr data-ng-repeat="x in salaryComponentData" data-ng-if="x.IsIncremental == false">
+                                            <td>{{x.Name}}<span ng-hide="true">{{addSalaryComponentAmountModel[$index].SalaryComponentID = x.SalaryComponentID}}</span></td>
+                                            <td><input type="text" ng-model="addSalaryComponentAmountModel[$index].Amount" required="required" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer text-center panelFooter">
+                <button type="submit" class="btn addButton">GENERATE PAYSLIP</button>
+                <button type="button" class="btn cancelButton" onclick="window.location.href='#/dashboard'">CANCEL</button>
+            </div>
+        </form>
+
+    </div>
+</div>

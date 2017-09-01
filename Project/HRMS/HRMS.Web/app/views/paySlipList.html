@@ -1,0 +1,46 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>PAYSLIP REPORT</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Reports / PaySlip Report
+        </div>
+    </div>
+    <hr />
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead class="tableHeader">
+                <tr>
+                    <th><a ng-click="columnName='FirstName'">Name</a></th>
+                    <th><a href="" ng-click="columnName='Department'">Department</a></th>
+                    <th><a href="" ng-click="columnName='CompanyBranch'">Branch</a></th>
+                    <th><a href="" ng-click="columnName='PayDate'">PaySlip ID</a></th>
+                    <th><a href="" ng-click="columnName='TotalSalary'">Pay Date</a></th>
+                    <th>Net Salary</th>
+                </tr>
+            </thead>
+            <tbody class="tableBody" data-ng-repeat="x in paySlipListData | orderBy:columnName">
+                <!--<tr>
+                    <td>{{x.FirstName}}  {{x.MiddleName}} {{x.LastName}}</td>
+                    <td>{{x.UserDepartments[0].Department.Name}}</td>
+                    <td>{{x.CompanyBranch.Name}}</td>
+                    <td>PaySlip ID</td>
+                    <td>Pay Date</td>
+                    <td>Net Salary</td>
+                </tr>-->
+                    <tr data-ng-repeat="y in x.PaySlips2" data-ng-dblclick="selectObject(x, y)">
+                        <td>{{x.FirstName}} {{x.MiddleName}} {{x.LastName}}</td>
+                        <td>{{x.UserDepartments[0].Department.Name}}</td>
+                        <td>{{x.CompanyBranch.Name}}</td>
+                        <td>{{y.PaySlipID}}</td>
+                        <td>{{y.PayDate}}</td>
+                        <td>{{y.TotalSalary}}</td>
+                    </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>

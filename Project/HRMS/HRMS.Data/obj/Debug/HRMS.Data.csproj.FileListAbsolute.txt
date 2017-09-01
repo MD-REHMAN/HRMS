@@ -1,0 +1,10 @@
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\bin\Debug\HRMS.Data.dll.config
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\bin\Debug\HRMS.Data.dll
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\bin\Debug\HRMS.Data.pdb
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\bin\Debug\EntityFramework.dll
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\bin\Debug\EntityFramework.xml
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\obj\Debug\HRMS.Data.csprojResolveAssemblyReference.cache
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\obj\Debug\HRMS.Data.dll
+E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\obj\Debug\HRMS.Data.pdb

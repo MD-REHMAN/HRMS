@@ -1,0 +1,163 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>GENERATE PAYSLIP</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Generate PaySlip
+        </div>
+    </div>
+    <hr />
+
+    <div class="panel panel-default panelBorder">
+
+        <div class="panel-heading panelHeader">
+            <strong>Payslip Details</strong>
+        </div>
+        <div class="panel-body panelBody">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div>
+                        <div>
+                            <div class="col-md-6">
+                                Pay Slip ID : {{selectedPaySlip.PaySlipID}}
+                            </div>
+                            <div class="col-md-6 text-right">
+                                Date : {{selectedPaySlip.CreatedDate}}
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <h1 class="text-center">
+                                <strong>Company Logo and Name</strong>
+                            </h1>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <tbody class="panelBody">
+                                <tr>
+                                    <td><strong>Name</strong></td>
+                                    <td>{{selectedUser.FirstName}} {{selectedUser.MiddleName}} {{selectedUser.LastName}}</td>
+                                    <td><strong>Employee Number</strong></td>
+                                    <td>{{selectedUser.UserID}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email</strong></td>
+                                    <td>{{selectedUser.Email}}</td>
+                                    <td><strong>Mobile Number</strong></td>
+                                    <td>{{selectedUser.MobileNumber}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Department</strong></td>
+                                    <td>{{selectedUser.UserDepartments[0].Department.Name}}</td>
+                                    <td><strong>Branch</strong></td>
+                                    <td>{{selectedUser.CompanyBranch.Name}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bank Account Number</strong></td>
+                                    <td>{{selectedUser.BankAccountNumber}}</td>
+                                    <td><strong>Date Of Joining</strong></td>
+                                    <td>{{selectedUser.DateOfJoining}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ESIC Number</strong></td>
+                                    <td>{{selectedUser.EsicNumber}}</td>
+                                    <td><strong>PF Number</strong></td>
+                                    <td>{{selectedUser.ProvidentFundNumber}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div>
+                        <div class="col-md-6">
+                            <table class="table table-bordered">
+                                <thead class="tableHeader">
+                                    <tr>
+                                        <th class="text-center" colspan="2">EARNINGS</th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="" ng-click="columnName='Name'">Name</a></th>
+                                        <th><a href="" ng-click="columnName='Amount'">Amount</a></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="panelBody">
+                                    <tr data-ng-repeat="x in selectedPaySlip.SalaryComponentAmounts" data-ng-if="x.SalaryComponent.IsIncremental == true">
+                                        <td>{{x.SalaryComponent.Name}}</td>
+                                        <td>{{x.Amount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-bordered">
+                                <thead class="tableHeader">
+                                    <tr>
+                                        <th class="text-center" colspan="2">DEDUCTIONS</th>
+                                    </tr>
+                                    <tr>
+                                        <th><a href="" ng-click="columnName='Name'">Name</a></th>
+                                        <th><a href="" ng-click="columnName='Amount'">Amount</a></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="panelBody">
+                                    <tr data-ng-repeat="x in selectedPaySlip.SalaryComponentAmounts" data-ng-if="x.SalaryComponent.IsIncremental == false">
+                                        <td>{{x.SalaryComponent.Name}}</td>
+                                        <td>{{x.Amount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    
+                    <!--<div class="container">
+                        <div class="col-md-6">
+                            <table class="table table-bordered">
+                                <tbody class="panelBody">
+                                    <tr>
+                                        <td><strong>Total Earning</strong></td>
+                                        <td><strong>20000</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-bordered">
+                                <tbody class="panelBody">
+                                    <tr>
+                                        <td><strong>Total Deduction</strong></td>
+                                        <td><strong>0</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>-->
+
+
+                    <div>
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead class="panelHeader">
+                                    <tr>
+                                        <td><strong>Net Pay : Rs. {{selectedPaySlip.TotalSalary}}</strong></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer text-center panelFooter">
+            <button type="button" class="btn addButton">PRINT</button>
+            <button type="button" class="btn cancelButton" onclick="window.location.href='#/paySlipList'">BACK</button>
+        </div>
+    </div>
+</div>

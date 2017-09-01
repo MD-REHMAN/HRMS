@@ -1,0 +1,175 @@
+﻿<div class="viewBody">
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+           <p class="viewHeading"><strong>{{heading_upperCase}}</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Settings / Users / {{heading_titleCase}}
+        </div>
+    </div>
+    <hr />
+
+    <div class="panel panel-default panelBorder">
+        <form name="addUserForm" class="form-horizontal" ng-class="{'has-error' : addUserForm.$invalid, 'has-success' : addUserForm.$valid}" ng-submit="addOrEditUser()">
+            <div class="panel-heading panelHeader">
+                <strong>User Details</strong>
+            </div>
+            <div class="panel-body panelBody">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">First Name:*</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.FirstName" required="required" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Middle Name:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.MiddleName" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Last Name:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.LastName" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Mobile Number:*</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.MobileNumber" required="required" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Email:</label>
+                                    <div class="col-md-8">
+                                        <input type="email" class="form-control" ng-model="addUserModel.Email" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Gender:*</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" ng-model="addUserModel.Gender" required="required">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Adhaar Number:*</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.AdhaarNumber" required="required" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Pan Number:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.PanNumber" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Bank Account Number:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.BankAccountNumber" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">PF Number:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.ProvidentFundNumber" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Esic Number:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.EsicNumber" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Date Of Birth:*</label>
+                                    <div class="col-md-8">
+                                        <input type="datetime" class="form-control" ng-model="addUserModel.DateOfBirth"  required="required" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Branch:*</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" ng-model="addUserModel.CompanyBranchID">
+                                            <option data-ng-repeat="x in companyBranchData" value={{x.CompanyBranchID}}>{{x.Name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Role:*</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" ng-model="addUserRoleModel.RoleID" required="required">
+                                            <option data-ng-repeat="x in roleData" value={{x.RoleID}}>{{x.Name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Department:*</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" ng-model="addUserDepartmentModel.DepartmentID">
+                                            <option data-ng-repeat="x in departmentData" value={{x.DepartmentID}}>{{x.Name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Password:</label>
+                                    <div class="col-md-8">
+                                        <input ng-disabled="addUserRoleModel.RoleID != '37bff508-8e98-a491-ef76-0efec2d17848'" type="password" class="form-control" ng-model="addUserModel.Password" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row" ng-show='loggedInUser.UserRoles[0].Role.Name == "SuperAdmin" && isEditing == true'>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Date Of Leaving:*</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="addUserModel.DateOfLeaving"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer text-center panelFooter">
+                <button type="submit" class="btn addButton">{{heading_upperCase}}</button>
+                <button type="button" class="btn cancelButton" onclick="window.location.href='#/dashboard'">CANCEL</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="row">
+
+</div>

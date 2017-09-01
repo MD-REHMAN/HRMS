@@ -1,0 +1,114 @@
+﻿/*NAVBAR AND SIDE-NAVBAR*/
+.navbarHeader {
+    color: #F3F3F4 !important;
+    background-color: #242A30 !important;
+    border-color: #242A30 !important;
+}
+.navbarBody {
+    color: #F3F3F4 !important;
+    background-color: #242A30 !important;
+    border-color: #242A30 !important;
+}
+
+.customTopNavbarPadding {
+    padding-top: 22px !important;
+    padding-bottom: 22px !important;
+}
+
+
+/*BODY*/
+.viewBody {
+    background-color: #455370 !important;
+}
+.viewHeading {
+    font-size: large !important;
+    color: #FFFFFF !important;
+}
+.breadCrumbStyle {
+    font-size:medium !important;
+    color: #FFFFFF !important;
+}
+
+/*PANEL*/
+.panelBorder {
+    border-color: #242A30 !important;
+}
+.panelHeader {
+    color: #F3F3F4 !important;
+    background-color: #242A30 !important;
+    border-color: #242A30 !important;
+}
+.panelBody {
+    color: #000000 !important;
+    background-color: #FFFFFF !important;
+    border-color: #242A30 !important;
+}
+.panelFooter {
+    color: #F3F3F4 !important;
+    background-color: #2D353C !important;
+    border-color: #242A30 !important;
+}
+.dashboardPanelPadding {
+    padding-top: 10px !important;
+    padding-bottom: 5px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+
+
+/*TABLE*/
+.tableHeader {
+    color: #F3F3F4 !important;
+    background-color: #242A30 !important;
+    border-color: #242A30 !important;
+}
+.tableBody {
+    color: #000000 !important;
+    background-color: #FFFFFF !important;
+    border-color: #242A30 !important;
+}
+.tableSubElement {
+    background-color: #a2a3a5 !important;
+}
+
+/*BUTTON*/
+.addButton {
+    color: #2D353C;
+    background-color: #727CB6;
+    border-color: #727CB6;
+}
+.addButton:hover{
+    color: #2D353C;
+    background-color: #454B6D;
+    border-color: #454B6D;
+}
+.cancelButton {
+    color: #2D353C;
+    background-color: #B6C2C9;
+    border-color: #B6C2C9;
+}
+.cancelButton:hover{
+    color: #2D353C;
+    background-color: #929ba1;
+    border-color: #929ba1;
+}
+
+/*
+FORM VALIDATION
+.form-control.ng-dirty.ng-invalid {
+    border-color: red;
+}
+.form-control.ng-dirty.ng-valid {
+    border-color: green;
+}*/
+
+
+a{
+    color: #F3F3F4;
+}
+.noPadding {
+    padding: 0px 0px 0px 0px;
+}
+.noMargin {
+    margin: 0px 0px 0px 0px;
+}

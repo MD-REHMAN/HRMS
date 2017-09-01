@@ -1,0 +1,33 @@
+﻿<div>
+    <br />
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead class="tableHeader">
+                <tr>
+
+                    <th><a href="" ng-click="columnName='SalaryComponentID'">SalaryComponent ID</a></th>
+                    <th><a href="" ng-click="columnName='Name'">Name</a></th>
+                    <th><a href="" ng-click="columnName='Description'">Description</a></th>
+                    <th><a href="" ng-click="columnName='IsIncremental'">IsIncremental</a></th>
+                    <th><a href="" ng-click="columnName='IsActive'">IsActive</a></th>
+
+
+                </tr>
+                </thead>
+
+            <tbody class="tableBody">
+                <tr data-ng-repeat="x in salaryComponentListData | orderBy:columnName"  data-ng-dblclick="selectObject(x)">
+
+                    <td>{{x.SalaryComponentID}}</td>
+                    <td>{{x.Name}}</td>
+                    <td>{{x.Description}}</td>
+                    <td>{{x.IsIncremental}}</td>
+                    <td>{{x.IsActive}}</td>
+
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>USER LIST</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Settings / Users / User List
+        </div>
+    </div>
+    <hr />
+    <div>
+        <div class="panelBody">
+            <br />
+            <form class="form-inline">
+                <div class="container">
+                    <div class="col-md-6">
+                        Show
+                        <select class="form-control" ng-change="getList()" ng-model="filter.selectedTop" ng-options="top for top in filter.tops">
+                            <!--<option value=10>10</option>
+                            <option value=20>20</option>
+                            <option value=50>50</option>
+                            <option value=100>100</option>-->
+                        </select>
+                        entries
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <!--<input type="text" class="form-control" ng-model="addUserModel.EsicNumber" />-->
+                        <div class="input-group">
+                            <input class="form-control input-group" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"><span class="fa fa-search"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br />
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered noMargin">
+                <thead class="tableHeader">
+                    <tr>
+
+                        <th><a ng-click="columnName='FirstName'">Name</a></th>
+                        <th><a href="" ng-click="columnName='Email'">Email</a></th>
+                        <th><a href="" ng-click="columnName='MobileNumber'">Mobile</a></th>
+                        <th><a href="" ng-click="columnName='UserRoles[0].Role.Name'">Role</a></th>
+                        <th><a href="" ng-click="columnName='CompanyBranch.Name'">CompanyBranch</a></th>
+                        <th><a href="" ng-click="columnName='UserDepartments[0].Department.Name'">Department</a></th>
+                        <th>IsActive</th>
+
+                    </tr>
+                </thead>
+                <tbody class="tableBody">
+                    <tr data-ng-repeat="x in userListData | orderBy:columnName" data-ng-dblclick="selectObject(x)">
+
+                        <td>{{x.FirstName}} {{x.MiddleName}} {{x.LastName}}</td>
+                        <td>{{x.Email}}</td>
+                        <td>{{x.MobileNumber}}</td>
+                        <td>{{x.UserRoles[0].Role.Name}}</td>
+                        <td>{{x.CompanyBranch.Name}}</td>
+                        <td>{{x.UserDepartments[0].Department.Name}}</td>
+                        <td data-ng-if="x.DateOfLeaving != null ">{{x.DateOfLeaving}}</td>
+                        <td data-ng-if="x.DateOfLeaving == null">true</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panelBody">
+            <br />
+            <div class="container">
+                <div class="col-md-6">
+                    Showing {{userListData.length}} of {{filter.selectedTop}} entries
+                </div>
+                <div class="col-md-6 text-right">
+                    
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>

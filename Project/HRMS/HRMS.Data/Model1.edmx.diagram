@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0c4e32474d1d493094d30a4966ec061c" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="HRMSModel.CompanyBranch" Width="1.5" PointX="0.625" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.Department" Width="1.5" PointX="0.625" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.Role" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.SalaryComponent" Width="1.5" PointX="5.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.User" Width="1.5" PointX="3.125" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="HRMSModel.FK__User__CompanyBra__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="HRMSModel.FK__Departmen__Creat__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="HRMSModel.FK__Departmen__Updat__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="HRMSModel.FK__SalaryCom__Creat__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="HRMSModel.FK__SalaryCom__Updat__239E4DCF" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HRMSModel.UserDepartment" Width="1.5" PointX="3.125" PointY="12.125" />
+        <EntityTypeShape EntityType="HRMSModel.UserRole" Width="1.5" PointX="0.625" PointY="3.125" />
+        <AssociationConnector Association="HRMSModel.FK__UserDepar__Depar__3B75D760" />
+        <AssociationConnector Association="HRMSModel.FK__UserRole__RoleID__37A5467C" />
+        <AssociationConnector Association="HRMSModel.FK__UserDepar__UserI__3A81B327" />
+        <AssociationConnector Association="HRMSModel.FK__UserRole__UserID__36B12243" />
+        <EntityTypeShape EntityType="HRMSModel.SalaryComponentAmount" Width="1.5" PointX="9" PointY="4.5" />
+        <AssociationConnector Association="HRMSModel.FK__SalaryCom__Salar__2B3F6F97" />
+        <AssociationConnector Association="HRMSModel.FK__SalaryCom__Creat__2C3393D0" />
+        <AssociationConnector Association="HRMSModel.FK__SalaryCom__Updat__2D27B809" />
+        <EntityTypeShape EntityType="HRMSModel.PaySlip" Width="1.5" PointX="5.75" PointY="2.125" />
+        <AssociationConnector Association="HRMSModel.FK__PaySlip__Created__267ABA7A" />
+        <AssociationConnector Association="HRMSModel.FK__PaySlip__Updated__276EDEB3" />
+        <AssociationConnector Association="HRMSModel.FK__PaySlip__UserID__48CFD27E" />
+        <AssociationConnector Association="HRMSModel.FK__SalaryCom__PaySl__2A4B4B5E" />
+        <EntityTypeShape EntityType="HRMSModel.LeaveRequest" Width="1.5" PointX="8.625" PointY="9.375" />
+        <EntityTypeShape EntityType="HRMSModel.LeaveType" Width="1.5" PointX="5.375" PointY="12" />
+        <EntityTypeShape EntityType="HRMSModel.UserLeave" Width="1.5" PointX="11.625" PointY="8.375" />
+        <AssociationConnector Association="HRMSModel.FK__LeaveRequ__Appro__628FA481" />
+        <AssociationConnector Association="HRMSModel.FK__LeaveRequ__Creat__60A75C0F" />
+        <AssociationConnector Association="HRMSModel.FK__LeaveRequ__Leave__6383C8BA" />
+        <AssociationConnector Association="HRMSModel.FK__LeaveRequ__Updat__619B8048" />
+        <AssociationConnector Association="HRMSModel.FK__LeaveType__Creat__5CD6CB2B" />
+        <AssociationConnector Association="HRMSModel.FK__LeaveType__Updat__5DCAEF64" />
+        <AssociationConnector Association="HRMSModel.FK__UserLeave__Leave__6754599E" />
+        <AssociationConnector Association="HRMSModel.FK__UserLeave__UserI__66603565" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

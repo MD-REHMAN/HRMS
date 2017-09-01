@@ -1,0 +1,27 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>COMPANY BRANCH LIST</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Settings / Company Branch / Company Branch List
+        </div>
+    </div>
+    <hr />
+
+    <table class="table table-hover table-bordered">
+        <thead class="tableHeader">
+            <tr>
+                <th><a href="" ng-click="columnName='companyBranchID'">CompanyBranch ID</a></th>
+                <th><a href="" ng-click="columnName='Name'">CompanyBranch Name</a></th>
+            </tr>
+        </thead>
+        <tbody class="tableBody">
+            <tr data-ng-repeat="x in companyBranchListData | orderBy:columnName" data-ng-dblclick="selectObject(x)">
+                <td>{{x.CompanyBranchID}}</td>
+                <td>{{x.Name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

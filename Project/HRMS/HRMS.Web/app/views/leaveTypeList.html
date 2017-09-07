@@ -1,0 +1,34 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>LEAVE TYPE LIST</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Settings / Departments / Leave Type List
+        </div>
+    </div>
+    <hr />
+
+    <table class="table table-hover table-bordered">
+        <thead class="tableHeader">
+            <tr>
+                <th><a href="" ng-click="columnName='DepartmentID'">Department ID</a></th>
+                <th><a href="" ng-click="columnName='Name'">Name</a></th>
+                <th><a href="" ng-click="columnName='Description'">Description</a></th>
+                <th><a href="" ng-click="columnName='Per Annum Leave'">Per Annum Leave</a></th>
+                <th><a href="" ng-click="columnName='IsActive'">IsActive</a></th>
+            </tr>
+        </thead>
+        <tbody class="tableBody">
+            <tr data-ng-repeat="x in leaveTypeListData | orderBy:columnName" data-ng-dblclick="selectObject(x)">
+                <td>{{x.LeaveTypeID}}</td>
+                <td>{{x.Name}}</td>
+                <td>{{x.Description}}</td>
+                <td>{{x.PerAnnumLeave}}</td>
+                <td>{{x.IsActive}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

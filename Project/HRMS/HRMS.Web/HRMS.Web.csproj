@@ -194,6 +194,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\addLeaveTypeController.js" />
+    <Content Include="app\controllers\leaveTypeListController.js" />
     <Content Include="app\controllers\headerController.js" />
     <Content Include="app\controllers\addCompanyBranchController.js" />
     <Content Include="app\controllers\addSalaryComponentController.js" />
@@ -212,17 +214,23 @@
     <Content Include="app\services\companyBranchService.js" />
     <Content Include="app\services\departmentService.js" />
     <Content Include="app\services\paySlipService.js" />
+    <Content Include="app\services\leaveTypeService.js" />
+    <Content Include="app\services\leaveRequestService.js" />
+    <Content Include="app\services\userLeaveService.js" />
     <Content Include="app\services\userDepartmentService.js" />
     <Content Include="app\services\salaryComponentAmountService.js" />
     <Content Include="app\services\salaryComponentService.js" />
     <Content Include="app\services\userRoleService.js" />
     <Content Include="app\services\roleService.js" />
     <Content Include="app\services\userService.js" />
+    <Content Include="app\views\addLeaveRequest.html" />
     <Content Include="app\views\addPaySlip.html" />
+    <Content Include="app\views\addLeaveType.html" />
     <Content Include="app\views\addSalaryComponent.html" />
     <Content Include="app\views\addDepartment.html" />
     <Content Include="app\views\addCompanyBranch.html" />
     <Content Include="app\views\addRole.html" />
+    <Content Include="app\views\leaveTypeList.html" />
     <Content Include="app\views\unauthorised.html" />
     <Content Include="app\views\viewPaySlip.html" />
     <Content Include="app\views\addUser.html" />

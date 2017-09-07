@@ -132,6 +132,33 @@ app.config(function ($routeProvider) {
         controller: 'companyBranchListCtrl'
     })
 
+    .when('/addLeaveType', {
+        resolve: {
+            "check": function ($location, localStorageService) {
+                if (localStorageService.get('loggedInUser') && (localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "SuperAdmin" || localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "Admin")) {
+
+                } else {
+                    $location.path('/unauthorised');
+                }
+            }
+        },
+        templateUrl: 'app/views/addLeaveType.html',
+        controller: 'addLeaveTypeCtrl'
+    })
+    .when('/leaveTypeList', {
+        resolve: {
+            "check": function ($location, localStorageService) {
+                if (localStorageService.get('loggedInUser') && (localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "SuperAdmin" || localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "Admin")) {
+
+                } else {
+                    $location.path('/unauthorised');
+                }
+            }
+        },
+        templateUrl: 'app/views/leaveTypeList.html',
+        controller: 'leaveTypeListCtrl'
+    })
+
     .when('/addSalaryComponent', {
         resolve: {
             "check": function ($location, localStorageService) {

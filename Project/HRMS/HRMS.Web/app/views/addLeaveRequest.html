@@ -1,0 +1,59 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>{{heading_upperCase}}</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home /  {{heading_titleCase}}
+        </div>
+    </div>
+    <hr />
+
+    <div class="panel panel-default panelBorder">
+
+        <form class="form-horizontal" ng-submit="addOrEditDepartment()">
+            <div class="panel-heading panelHeader">
+                <strong>Department Details</strong>
+            </div>
+            <div class="panel-body panelBody">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Name:*</label>
+                                    <div class="col-md-8">
+                                        <input type="text" ng-model="addDepartmentModel.Name" required="required" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Description:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" ng-model="addDepartmentModel.Description" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Is Active:</label>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" ng-model="addDepartmentModel.IsActive" required="required" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer text-center panelFooter">
+                <button type="submit" class="btn addButton">{{heading_upperCase}}</button>
+                <button type="button" class="btn cancelButton" onclick="window.location.href='#/dashboard'">CANCEL</button>
+            </div>
+        </form>
+
+    </div>
+</div>

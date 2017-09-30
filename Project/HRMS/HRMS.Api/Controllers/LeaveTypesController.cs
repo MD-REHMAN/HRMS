@@ -27,6 +27,8 @@ namespace HRMS.Api.Controllers
     builder.EntitySet<UserLeave>("UserLeaves"); 
     config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
     */
+
+    
     public class LeaveTypesController : ODataController
     {
         private HRMSEntities db = new HRMSEntities();
@@ -84,6 +86,21 @@ namespace HRMS.Api.Controllers
 
         // POST: odata/LeaveTypes
         public IHttpActionResult Post(LeaveType leaveType)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.LeaveTypes.Add(leaveType);
+            db.SaveChanges();
+
+            return Created(leaveType);
+        }
+
+      
+        // POST: odata/LeaveTypes
+        public IHttpActionResult AddLeaveTypeAllUser(LeaveType leaveType)
         {
             if (!ModelState.IsValid)
             {

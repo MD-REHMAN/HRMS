@@ -1,5 +1,5 @@
 ﻿
-app.controller('paySlipListCtrl', ['$scope', '$rootScope', '$location', '$http', 'localStorageService', 'userService', 'paySlipService', function ($scope, $rootScope, $location, $http, localStorageService, userService, paySlipService) {
+app.controller('paySlipReportCtrl', ['$scope', '$rootScope', '$location', '$http', 'localStorageService', 'userService', 'paySlipService', function ($scope, $rootScope, $location, $http, localStorageService, userService, paySlipService) {
     $scope.message = "";
     $scope.expand = "?$expand=CompanyBranch,UserDepartments/Department,PaySlips2/SalaryComponentAmounts/SalaryComponent";
 

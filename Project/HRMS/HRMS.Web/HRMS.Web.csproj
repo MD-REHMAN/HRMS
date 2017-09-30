@@ -194,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\addLeaveRequestController.js" />
     <Content Include="app\controllers\addLeaveTypeController.js" />
     <Content Include="app\controllers\leaveTypeListController.js" />
     <Content Include="app\controllers\headerController.js" />
@@ -203,11 +204,12 @@
     <Content Include="app\controllers\addRoleController.js" />
     <Content Include="app\controllers\addPaySlipController.js" />
     <Content Include="app\controllers\companyBranchListController.js" />
+    <Content Include="app\controllers\userLeaveReportController.js" />
     <Content Include="app\controllers\viewPaySlipController.js" />
     <Content Include="app\controllers\salaryComponentListController.js" />
     <Content Include="app\controllers\departmentListController.js" />
     <Content Include="app\controllers\roleListController.js" />
-    <Content Include="app\controllers\paySlipListController.js" />
+    <Content Include="app\controllers\paySlipReportController.js" />
     <Content Include="app\controllers\userListController.js" />
     <Content Include="app\controllers\addUserController.js" />
     <Content Include="app\controllers\dashboardController.js" />
@@ -231,6 +233,7 @@
     <Content Include="app\views\addCompanyBranch.html" />
     <Content Include="app\views\addRole.html" />
     <Content Include="app\views\leaveTypeList.html" />
+    <Content Include="app\views\userLeaveReport.html" />
     <Content Include="app\views\unauthorised.html" />
     <Content Include="app\views\viewPaySlip.html" />
     <Content Include="app\views\addUser.html" />
@@ -244,7 +247,7 @@
     <Content Include="app\views\companyBranchList.html" />
     <Content Include="app\views\roleList.html" />
     <Content Include="app\views\userList.html" />
-    <Content Include="app\views\paySlipList.html" />
+    <Content Include="app\views\paySlipReport.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

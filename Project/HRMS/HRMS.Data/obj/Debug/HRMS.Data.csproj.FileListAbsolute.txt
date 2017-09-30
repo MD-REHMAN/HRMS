@@ -8,3 +8,13 @@ E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\bin\Debug\EntityFramework.SqlServ
 E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\obj\Debug\HRMS.Data.csprojResolveAssemblyReference.cache
 E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\obj\Debug\HRMS.Data.dll
 E:\Study\Projects\Visual Studio\HRMS\HRMS.Data\obj\Debug\HRMS.Data.pdb
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\bin\Debug\HRMS.Data.dll.config
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\bin\Debug\HRMS.Data.dll
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\bin\Debug\HRMS.Data.pdb
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\bin\Debug\EntityFramework.dll
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\bin\Debug\EntityFramework.xml
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\obj\Debug\HRMS.Data.csprojResolveAssemblyReference.cache
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\obj\Debug\HRMS.Data.dll
+D:\GitHub\REHMAN.2468\HRMS\Project\HRMS\HRMS.Data\obj\Debug\HRMS.Data.pdb

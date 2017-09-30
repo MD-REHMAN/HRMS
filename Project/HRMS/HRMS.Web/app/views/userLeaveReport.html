@@ -1,0 +1,39 @@
+﻿<div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p class="viewHeading"><strong>USER LEAVE REPORT</strong></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right breadCrumbStyle">
+            Home / Reports / User Leave Report
+        </div>
+    </div>
+    <hr />
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead class="tableHeader">
+                <tr>
+                    <th><a href="" ng-click="columnName='UserID'">Employee ID</a></th>
+                    <th><a ng-click="columnName='FirstName'">Name</a></th>
+                    <th data-ng-repeat="x in userLeaveReportData[0].UserLeaves"><a href="" ng-click="columnName='{{x.LeaveType.Name}}'">{{x.LeaveType.Name}}</a></th>
+                </tr>
+            </thead>
+            <tbody class="tableBody" data-ng-repeat="y in userLeaveReportData | orderBy:columnName">
+                <!--<tr>
+                    <td>{{x.FirstName}}  {{x.MiddleName}} {{x.LastName}}</td>
+                    <td>{{x.UserDepartments[0].Department.Name}}</td>
+                    <td>{{x.CompanyBranch.Name}}</td>
+                    <td>PaySlip ID</td>
+                    <td>Pay Date</td>
+                    <td>Net Salary</td>
+                </tr>-->
+                    <tr data-ng-dblclick="selectObject(x, y)">
+                        <td>{{y.UserID}}</td>
+                        <td>{{y.FirstName}} {{y.MiddleName}} {{y.LastName}}</td>
+                        <td data-ng-repeat="z in y.UserLeaves" ng-if="z.LeaveType.IsActive == true">{{z.NumberOfLeave}}</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

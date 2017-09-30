@@ -1,6 +1,8 @@
 ﻿var app = angular.module('HRMS', ['ngRoute', 'LocalStorageModule']);
 
 app.constant('baseURL', 'http://localhost/HRMS.Api/odata/')
+app.constant('webApiURL', 'http://localhost/HRMS.Api/')
+
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -159,6 +161,20 @@ app.config(function ($routeProvider) {
         controller: 'leaveTypeListCtrl'
     })
 
+    .when('/requestLeave', {
+        resolve: {
+            "check": function ($location, localStorageService) {
+                if (localStorageService.get('loggedInUser') && (localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "SuperAdmin" || localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "Admin")) {
+
+                } else {
+                    $location.path('/unauthorised');
+                }
+            }
+        },
+        templateUrl: 'app/views/addLeaveRequest.html',
+        controller: 'addLeaveRequestCtrl'
+    })
+
     .when('/addSalaryComponent', {
         resolve: {
             "check": function ($location, localStorageService) {
@@ -199,7 +215,7 @@ app.config(function ($routeProvider) {
         templateUrl: 'app/views/addPaySlip.html',
         controller: 'addPaySlipCtrl'
     })
-    .when('/paySlipList', {
+    .when('/paySlipReport', {
         resolve: {
             "check": function ($location, localStorageService) {
                 if (localStorageService.get('loggedInUser') && (localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "SuperAdmin" || localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "Admin")) {
@@ -209,8 +225,8 @@ app.config(function ($routeProvider) {
                 }
             }
         },
-        templateUrl: 'app/views/paySlipList.html',
-        controller: 'paySlipListCtrl'
+        templateUrl: 'app/views/paySlipReport.html',
+        controller: 'paySlipReportCtrl'
     })
     .when('/viewPaySlip', {
         resolve: {
@@ -226,6 +242,19 @@ app.config(function ($routeProvider) {
         controller: 'viewPaySlipCtrl'
     })
 
+    .when('/userLeaveReport', {
+        resolve: {
+            "check": function ($location, localStorageService) {
+                if (localStorageService.get('loggedInUser') && (localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "SuperAdmin" || localStorageService.get('loggedInUser').UserRoles[0].Role.Name == "Admin")) {
+
+                } else {
+                    $location.path('/unauthorised');
+                }
+            }
+        },
+        templateUrl: 'app/views/userLeaveReport.html',
+        controller: 'userLeaveReportCtrl'
+    })
 
     .when('/generalSetting', {
         resolve: {

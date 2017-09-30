@@ -12,9 +12,9 @@
 
     <div class="panel panel-default panelBorder">
 
-        <form class="form-horizontal" ng-submit="addOrEditDepartment()">
+        <form class="form-horizontal" ng-submit="addOrEditLeaveType()">
             <div class="panel-heading panelHeader">
-                <strong>Department Details</strong>
+                <strong>Leave Request Details</strong>
             </div>
             <div class="panel-body panelBody">
                 <div class="row">
@@ -23,15 +23,44 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="col-md-4 control-label">Name:*</label>
+                                    <label class="col-md-4 control-label">Leave Type:*</label>
                                     <div class="col-md-8">
-                                        <input type="text" ng-model="addDepartmentModel.Name" required="required" />
+                                        <select ng-change="fillNumberOfLeave()" class="form-control" ng-model="addLeaveRequestModel.LeaveTypeID">
+                                            <option data-ng-repeat="x in leaveTypeData" value={{x.LeaveTypeID}}>{{x.Name}}</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="col-md-4 control-label">Description:</label>
+                                    <label class="col-md-4 control-label"><!--Password:--></label>
                                     <div class="col-md-8">
-                                        <input type="text" ng-model="addDepartmentModel.Description" />
+                                        <!--<input ng-disabled="addUserRoleModel.RoleID != '37bff508-8e98-a491-ef76-0efec2d17848'" type="password" class="form-control" ng-model="addUserModel.Password" />-->
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Date:*</label>
+                                    <div class="col-md-8">
+                                        <input type="date" ng-disabled="addLeaveRequestModel.LeaveTypeID == null" class="form-control" ng-model="addUserModel.Password" />
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label">Number Of days:*</label>
+                                    <div class="col-md-8">
+                                        <select  ng-disabled="addLeaveRequestModel.LeaveTypeID == null" class="form-control" ng-model="addUserDepartmentModel.DepartmentID">
+                                            <option data-ng-repeat="x in userLeaveData" value={{x.NumberOfLeave}}>{{x.NumberOfLeave}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="col-md-2 control-label">Reason:*</label>
+                                    <div class="col-md-10 col-md-offset-2 col-md-pull-1">
+                                        <textarea class="form-control" rows="3" ng-model="addDepartmentModel.Name" required="required" />
                                     </div>
                                 </div>
                             </div>

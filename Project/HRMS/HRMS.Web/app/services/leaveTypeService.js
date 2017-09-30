@@ -1,4 +1,4 @@
-﻿app.factory('leaveTypeService', ['$http', 'baseURL', function ($http, baseURL) {
+﻿app.factory('leaveTypeService', ['$http', 'baseURL', 'webApiURL', function ($http, baseURL, webApiURL) {
 
     var leaveTypeServiceFactory = {};
     var _isLeaveTypeEditing = false;
@@ -19,6 +19,15 @@
         });
     };
 
+    var _addLeaveTypeAllUser = function (model) {
+
+        return $http.post(webApiURL + 'api/LeaveTypesWeb/AddLeaveTypeAllUser', model).then(function (results) {
+            return results;
+        });
+    };
+
+    //"http://localhost:55030/"
+
     var _updateLeaveType = function (model) {
 
         return $http.put(baseURL + "LeaveTypes('" + model.LeaveTypeID + "')", model).then(function (results) {
@@ -28,6 +37,7 @@
 
     leaveTypeServiceFactory.getLeaveType = _getLeaveType;
     leaveTypeServiceFactory.addLeaveType = _addLeaveType;
+    leaveTypeServiceFactory.addLeaveTypeAllUser = _addLeaveTypeAllUser;
     leaveTypeServiceFactory.updateLeaveType = _updateLeaveType;
     leaveTypeServiceFactory.selectedLeaveType = _selectedLeaveType;
     leaveTypeServiceFactory.isLeaveTypeEditing = _isLeaveTypeEditing;

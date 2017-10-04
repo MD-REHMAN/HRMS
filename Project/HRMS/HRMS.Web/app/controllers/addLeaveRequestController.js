@@ -3,6 +3,7 @@
     $scope.leaveTypeData = {};
     $scope.userLeaveData = {};
     $scope.addLeaveRequestModel = {};
+    $scope.updateUserLeaveModel = {};
     $scope.count = 0;
 
     leaveTypeService.getLeaveType("?$filter=IsActive eq true").then(function (response) {
@@ -13,8 +14,16 @@
     })
 
     $scope.fillNumberOfLeave = function () {
-        userLeaveService.getUserLeave("?$filter=LeaveTypeID eq " + $scope.addLeaveRequestModel.LeaveTypeID + "&UserID eq '" +localStorageService.get('loggedInUser').UserID+ "'").then(function (response) {
-            $scope.userLeaveData = response.data.value
+        userLeaveService.getUserLeave("?$filter=LeaveTypeID eq " + $scope.addLeaveRequestModel.LeaveTypeID + " and UserID eq '" +localStorageService.get('loggedInUser').UserID+ "'").then(function (response) {
+            $scope.userLeaveData = response.data.value[0];
+            $scope.range = function (min, max, step) {
+                step = step || 1;
+                var input = [];
+                for (var i = min; i <= $scope.userLeaveData.NumberOfLeave; i += step) {
+                    input.push(i);
+                }
+                return input;
+            };
         }, function (error) {
             $scope.message = 'Error';
         })
@@ -24,19 +33,19 @@
 
         $scope.heading_titleCase = "Edit Leave Request";
         $scope.heading_upperCase = "EDIT LEAVE REQUEST";
-        $scope.addLeaveTypeModel.LeaveTypeID = leaveTypeService.selectedLeaveType.LeaveTypeID;
-        $scope.addLeaveTypeModel.Name = leaveTypeService.selectedLeaveType.Name;
-        $scope.addLeaveTypeModel.Description = leaveTypeService.selectedLeaveType.Description;
-        $scope.addLeaveTypeModel.IsActive = leaveTypeService.selectedLeaveType.IsActive;
-        $scope.addLeaveTypeModel.CreatedBy = leaveTypeService.selectedLeaveType.CreatedBy;
-        $scope.addLeaveTypeModel.CreatedDate = leaveTypeService.selectedLeaveType.CreatedDate;
+        $scope.addLeaveRequestModel.LeaveTypeID = leaveTypeService.selectedLeaveType.LeaveTypeID;
+        $scope.addLeaveRequestModel.Name = leaveTypeService.selectedLeaveType.Name;
+        $scope.addLeaveRequestModel.Description = leaveTypeService.selectedLeaveType.Description;
+        $scope.addLeaveRequestModel.IsActive = leaveTypeService.selectedLeaveType.IsActive;
+        $scope.addLeaveRequestModel.CreatedBy = leaveTypeService.selectedLeaveType.CreatedBy;
+        $scope.addLeaveRequestModel.CreatedDate = leaveTypeService.selectedLeaveType.CreatedDate;
 
         $scope.addOrEditLeaveType = function () {
 
-            $scope.addLeaveTypeModel.UpdatedBy = localStorageService.get('loggedInUser').UserID;
-            $scope.addLeaveTypeModel.UpdatedDate = new Date();
+            $scope.addLeaveRequestModel.UpdatedBy = localStorageService.get('loggedInUser').UserID;
+            $scope.addLeaveRequestModel.UpdatedDate = new Date();
 
-            leaveTypeService.updateLeaveType($scope.addLeaveTypeModel).then(function (response) {
+            leaveTypeService.updateLeaveType($scope.addLeaveRequestModel).then(function (response) {
                 $scope.message = $scope.message + '-LeaveType edited-';
                 $location.path('/leaveTypeList');
             }, function (error) {
@@ -50,36 +59,27 @@
 
         $scope.addOrEditLeaveType = function () {
 
-            $scope.addLeaveTypeModel.CreatedBy = localStorageService.get('loggedInUser').UserID;
-            $scope.addLeaveTypeModel.CreatedDate = new Date();
-            $scope.addLeaveTypeModel.UpdatedBy = localStorageService.get('loggedInUser').UserID;
-            $scope.addLeaveTypeModel.UpdatedDate = new Date();
+            $scope.addLeaveRequestModel.ApprovedBy = localStorageService.get('loggedInUser').UserID;
+            $scope.addLeaveRequestModel.IsApproved = false;
+            $scope.addLeaveRequestModel.CreatedBy = localStorageService.get('loggedInUser').UserID;
+            $scope.addLeaveRequestModel.CreatedDate = new Date();
+            $scope.addLeaveRequestModel.UpdatedBy = localStorageService.get('loggedInUser').UserID;
+            $scope.addLeaveRequestModel.UpdatedDate = new Date();
 
-            leaveTypeService.addLeaveType($scope.addLeaveTypeModel).then(function (response) {
+            leaveRequestService.addLeaveRequest($scope.addLeaveRequestModel).then(function (response) {
                 $scope.message = $scope.message + '-LeaveType added-';
-                $scope.addUserLeaveModel.NumberOfLeave = response.data.PerAnnumLeave;
-                $scope.addUserLeaveModel.LeaveTypeID = response.data.LeaveTypeID;
-
-                userService.getUser("?$filter=DateOfLeaving eq null").then(function (response) {
-                    $scope.userModel = response.data.value;
-                    angular.forEach($scope.userModel, function (value, key) {
-
-                        $scope.addUserLeaveModel.UserID = value.UserID;
-                        $scope.count++;
-
-                        userLeaveService.addUserLeave($scope.addUserLeaveModel).then(function (response) {
-                            $scope.message = $scope.message + '-Users Leaves added-';
-                            if ($scope.count == $scope.userModel.length) {
-                                $location.path('/leaveTypeList');
-                            }
-                        }, function (error) {
-                            $scope.message = 'Error';
-                        })
-
-                    })
+                $scope.addLeaveRequestModel = response.data;
+                $scope.updateUserLeaveModel.UserLeaveID = $scope.userLeaveData.UserLeaveID;
+                $scope.updateUserLeaveModel.UserID = localStorageService.get('loggedInUser').UserID;
+                $scope.updateUserLeaveModel.LeaveTypeID = $scope.addLeaveRequestModel.LeaveTypeID;
+                $scope.updateUserLeaveModel.NumberOfLeave = $scope.userLeaveData.NumberOfLeave - $scope.addLeaveRequestModel.NumberOfDays;
+                userLeaveService.updateUserLeave($scope.updateUserLeaveModel).then(function (response) {
+                    $scope.message = $scope.message + '-LeaveType added-';
+                    $location.path('/dashboard');
                 }, function (error) {
                     $scope.message = 'Error';
                 })
+                
             }, function (error) {
                 $scope.message = 'Error';
             })

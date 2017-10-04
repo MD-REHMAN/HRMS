@@ -6,11 +6,11 @@
 
 	<!--Default css-->
 	<link href="Content/css/bootstrap.css" rel="stylesheet" />
-    <link href="Content/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+	<link href="Content/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
 
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
 	<!--My css-->
@@ -23,7 +23,7 @@
 <body >
 	<div ng-controller="headerCtrl">
 		<div data-ng-include="'app/views/header.html'"></div>
-		<div id="wrapper" class="viewBody toggled">
+		<div id="wrapper" ng-class="viewBody toggled" class="viewBody toggled">
 			<div class="container">
 				<div data-ng-view=""></div>
 			</div>
@@ -33,7 +33,15 @@
 
 
 	<!--Basic JavaScripts-->
-	<script src="Scripts/jquery-1.10.2.js"></script>
+	<!--<script src="Scripts/jquery-1.10.2.js"></script>
+	<script src="Scripts/jquery.validate.js"></script>
+	<script src="Scripts/bootstrap.js"></script>
+	<script src="Scripts/angular.js"></script>
+	<script src="Scripts/angular-route.js"></script>
+	<script src="Scripts/angular-local-storage.js"></script>-->
+
+	<script src="Scripts/jquery-3.2.1.js"></script>
+	<script src="Scripts/jquery-3.2.1.slim.js"></script>
 	<script src="Scripts/jquery.validate.js"></script>
 	<script src="Scripts/bootstrap.js"></script>
 	<script src="Scripts/angular.js"></script>
@@ -54,15 +62,15 @@
 	<script src="app/controllers/departmentListController.js"></script>
 	<script src="app/controllers/addCompanyBranchController.js"></script>
 	<script src="app/controllers/companyBranchListController.js"></script>
-    <script src="app/controllers/addLeaveTypeController.js"></script>
-    <script src="app/controllers/leaveTypeListController.js"></script>
-    <script src="app/controllers/addLeaveRequestController.js"></script>
+	<script src="app/controllers/addLeaveTypeController.js"></script>
+	<script src="app/controllers/leaveTypeListController.js"></script>
+	<script src="app/controllers/addLeaveRequestController.js"></script>
 	<script src="app/controllers/addSalaryComponentController.js"></script>
 	<script src="app/controllers/salaryComponentListController.js"></script>
 	<script src="app/controllers/addPaySlipController.js"></script>
-    <script src="app/controllers/paySlipReportController.js"></script>
+	<script src="app/controllers/paySlipReportController.js"></script>
 	<script src="app/controllers/viewPaySlipController.js"></script>
-    <script src="app/controllers/userLeaveReportController.js"></script>
+	<script src="app/controllers/userLeaveReportController.js"></script>
 
 
 	<!--Application's Services-->
@@ -70,9 +78,9 @@
 	<script src="app/services/roleService.js"></script>
 	<script src="app/services/companyBranchService.js"></script>
 	<script src="app/services/departmentService.js"></script>
-    <script src="app/services/leaveTypeService.js"></script>
-    <script src="app/services/userLeaveService.js"></script>
-    <script src="app/services/leaveRequestService.js"></script>
+	<script src="app/services/leaveTypeService.js"></script>
+	<script src="app/services/userLeaveService.js"></script>
+	<script src="app/services/leaveRequestService.js"></script>
 	<script src="app/services/paySlipService.js"></script>
 	<script src="app/services/salaryComponentAmountService.js"></script>
 	<script src="app/services/salaryComponentService.js"></script>

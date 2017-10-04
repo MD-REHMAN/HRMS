@@ -80,20 +80,61 @@
         <div class="col-md-6">
             <div class="panel panelBorder">
                 <div class="panel-heading panelHeader">
-                    Panel Heading
+                    My Leave Request
                 </div>
                 <div class="panel-body panelBody">
-                    Some Descriptio or Graph
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed">
+                            <thead class="tableHeader">
+                                <tr>
+                                    <th><a href="" ng-click="columnName='LeaveRequestID'">Request ID</a></th>
+                                    <th><a href="" ng-click="columnName='DateFrom'">Date From</a></th>
+                                    <th><a href="" ng-click="columnName='NumberOfDays'">Number Of Days</a></th>
+                                    <th><a href="" ng-click="columnName='IsActive'">Action</a></th>
+                                </tr>
+                            </thead>
+                            <tbody class="tableBody">
+                                <tr data-ng-repeat="x in leaveRequest | orderBy:columnName" data-ng-dblclick="selectObject(x)" data-ng-if="x.IsApproved == false && x.ApprovedBy == 'loggedInUser.UserID'">
+                                    <td>{{x.LeaveRequestID}}</td>
+                                    <td>{{x.DateFrom}}</td>
+                                    <td>{{x.NumberOfDays}}</td>
+                                    <td ng-if="x.IsActive == true"><a href="">Cancel</a></td>
+                                    <td ng-if="x.IsActive != true"><a href="">Activae</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="panel panelBorder">
                 <div class="panel-heading panelHeader">
-                    Panel Heading
+                    Leave Request History
                 </div>
                 <div class="panel-body panelBody">
-                    Some Descriptio or Graph
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed">
+                            <thead class="tableHeader">
+                                <tr>
+                                    <th><a href="" ng-click="columnName='LeaveRequestID'">Request ID</a></th>
+                                    <th><a href="" ng-click="columnName='DateFrom'">Date From</a></th>
+                                    <th><a href="" ng-click="columnName='NumberOfDays'">Number Of Days</a></th>
+                                    <th><a href="" ng-click="columnName='IsApproved'">Status</a></th>
+                                </tr>
+                            </thead>
+                            <tbody class="tableBody">
+                                <tr data-ng-repeat="x in leaveRequest | orderBy:columnName" data-ng-dblclick="selectObject(x)" data-ng-if="x.ApprovedBy != 'loggedInUser.UserID'">
+
+                                    <td>{{x.LeaveRequestID}}</td>
+                                    <td>{{x.DateFrom}}</td>
+                                    <td>{{x.NumberOfDays}}</td>
+                                    <td ng-if="x.IsApproved == true">Approved</td>
+                                    <td ng-if="x.IsApproved != true">Rejected</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,20 +146,62 @@
         <div class="col-md-6">
             <div class="panel panelBorder">
                 <div class="panel-heading panelHeader">
-                    Panel Heading
+                    Pending Requests
                 </div>
                 <div class="panel-body panelBody">
-                    Some Descriptio or Graph
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed">
+                            <thead class="tableHeader">
+                                <tr>
+                                    <th><a href="" ng-click="columnName='LeaveRequestID'">Request ID</a></th>
+                                    <th><a href="" ng-click="columnName='DateFrom'">Date From</a></th>
+                                    <th><a href="" ng-click="columnName='NumberOfDays'">Number Of Days</a></th>
+                                    <th><a href="" ng-click="columnName='IsActive'">Approve</a></th>
+                                    <th><a href="" ng-click="columnName='IsActive'">Reject</a></th>
+                                </tr>
+                            </thead>
+                            <tbody class="tableBody">
+                                <tr data-ng-repeat="x in leaveRequest | orderBy:columnName" data-ng-dblclick="selectObject(x)" data-ng-if="x.IsApproved == false && x.CreatedBy != 'loggedInUser.UserID' && x.ApprovedBy == x.CreatedBy">
+                                    <td>{{x.LeaveRequestID}}</td>
+                                    <td>{{x.DateFrom}}</td>
+                                    <td>{{x.NumberOfDays}}</td>
+                                    <td><button type="button" class="btn btn-success btn-xs" ng-click="approveLeaveRequest(x)">Approve</button></td>
+                                    <td><button type="button" class="btn btn-danger btn-xs" ng-click="rejectLeaveRequest(x)">Reject</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="panel panelBorder">
                 <div class="panel-heading panelHeader">
-                    Panel Heading
+                    History
                 </div>
                 <div class="panel-body panelBody">
-                    Some Descriptio or Graph
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed">
+                            <thead class="tableHeader">
+                                <tr>
+                                    <th><a href="" ng-click="columnName='LeaveRequestID'">Request ID</a></th>
+                                    <th><a href="" ng-click="columnName='DateFrom'">Date From</a></th>
+                                    <th><a href="" ng-click="columnName='NumberOfDays'">Number Of Days</a></th>
+                                    <th><a href="" ng-click="columnName='IsApproved'">Status</a></th>
+                                </tr>
+                            </thead>
+                            <tbody class="tableBody">
+                                <tr data-ng-repeat="x in leaveRequest | orderBy:columnName" data-ng-dblclick="selectObject(x)" data-ng-if="x.ApprovedBy == 'loggedInUser.UserID' || x.CreatedBy != 'loggedInUser.UserID'">
+
+                                    <td>{{x.LeaveRequestID}}</td>
+                                    <td>{{x.DateFrom}}</td>
+                                    <td>{{x.NumberOfDays}}</td>
+                                    <td ng-if="x.IsApproved == true">Approved</td>
+                                    <td ng-if="x.IsApproved != true">Rejected</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

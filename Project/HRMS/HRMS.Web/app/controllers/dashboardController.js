@@ -1,8 +1,11 @@
-﻿app.controller('dashboardCtrl', ['$scope', '$rootScope', '$location', '$http', 'localStorageService', 'userService', 'roleService', 'paySlipService', function ($scope, $rootScope, $location, $http, localStorageService, userService, roleService, paySlipService) {
+﻿app.controller('dashboardCtrl', ['$scope', '$rootScope', '$location', '$http', 'localStorageService', 'userService', 'roleService', 'paySlipService', 'leaveRequestService', function ($scope, $rootScope, $location, $http, localStorageService, userService, roleService, paySlipService, leaveRequestService) {
 
     $scope.employeeCount = {};
     $scope.internCount = {};
     $scope.paySlipCount = {};
+    $scope.leaveRequest = [];
+    $scope.selectedLeaveRequest = {};
+    $scope.loggedInUser = localStorageService.get('loggedInUser');
 
 
     $rootScope.$broadcast('loginEvent'); //Here I'm only sending event
@@ -31,5 +34,31 @@
     }, function (error) {
         $scope.message = "Invalide";
     });
+
+    var leaveRequestFilter = "?$filter=CreatedBy eq '" + $scope.loggedInUser.UserID + "'";
+
+    leaveRequestService.getLeaveRequest(leaveRequestFilter).then(function (response) {
+        $scope.leaveRequest = response.data.value;
+    }, function (error) {
+        $scope.message = "Invalide";
+    });
+
+    $scope.approveLeaveRequest = function (selectedLeaveRequest) {
+        delete $scope.selectedLeaveRequest.$$hashKey;
+        $scope.selectedLeaveRequest.IsApproved = true;
+        $scope.selectedLeaveRequest.ApprovedBy = $scope.loggedInUser.UserID;
+        $scope.selectedLeaveRequest.UpdatedDate = new Date();
+        $scope.selectedLeaveRequest.UpdatedBy = $scope.loggedInUser.UserID;
+
+        leaveRequestService.updateLeaveRequest($scope.selectedLeaveRequest).then(function (response) {
+
+        }, function (error) {
+            $scope.message = $scope.message + "Not approved";
+        });
+    }
+    $scope.rejectLeaveRequest = function (selectedUser) {
+        Blah;
+    }
+
 
 }]);

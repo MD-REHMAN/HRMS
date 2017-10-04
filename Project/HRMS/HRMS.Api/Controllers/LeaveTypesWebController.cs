@@ -105,7 +105,7 @@ namespace HRMS.Api.Controllers
 
             if (lt.LeaveTypeID > 0)
             {
-                var allUsers = db.Users.AsNoTracking().ToList();
+                var allUsers = db.Users.Where(w => w.DateOfLeaving == null).AsNoTracking().ToList();
                 if(allUsers.Count > 0 )
                 {
                     foreach(User item in allUsers){

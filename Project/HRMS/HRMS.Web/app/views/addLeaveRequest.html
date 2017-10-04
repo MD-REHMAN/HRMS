@@ -42,15 +42,15 @@
                                 <div class="col-md-6">
                                     <label class="col-md-4 control-label">Date:*</label>
                                     <div class="col-md-8">
-                                        <input type="date" ng-disabled="addLeaveRequestModel.LeaveTypeID == null" class="form-control" ng-model="addUserModel.Password" />
+                                        <input type="date" ng-disabled="addLeaveRequestModel.LeaveTypeID == null" class="form-control" ng-model="addLeaveRequestModel.DateFrom" />
                                     </div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <label class="col-md-4 control-label">Number Of days:*</label>
                                     <div class="col-md-8">
-                                        <select  ng-disabled="addLeaveRequestModel.LeaveTypeID == null" class="form-control" ng-model="addUserDepartmentModel.DepartmentID">
-                                            <option data-ng-repeat="x in userLeaveData" value={{x.NumberOfLeave}}>{{x.NumberOfLeave}}</option>
+                                        <select  ng-disabled="addLeaveRequestModel.LeaveTypeID == null" class="form-control" ng-model="addLeaveRequestModel.NumberOfDays">
+                                            <option data-ng-repeat="i in range(1,2)" value={{i}}>{{i}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                                 <div class="col-md-12">
                                     <label class="col-md-2 control-label">Reason:*</label>
                                     <div class="col-md-10 col-md-offset-2 col-md-pull-1">
-                                        <textarea class="form-control" rows="3" ng-model="addDepartmentModel.Name" required="required" />
+                                        <textarea class="form-control" rows="3" ng-model="addLeaveRequestModel.Reason" required="required" />
                                     </div>
                                 </div>
                             </div>

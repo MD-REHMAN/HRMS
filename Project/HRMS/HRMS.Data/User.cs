@@ -34,6 +34,7 @@ namespace HRMS.Data
             this.LeaveTypes = new HashSet<LeaveType>();
             this.LeaveTypes1 = new HashSet<LeaveType>();
             this.UserLeaves = new HashSet<UserLeave>();
+            this.UserDetails = new HashSet<UserDetail>();
         }
     
         public string UserID { get; set; }
@@ -89,5 +90,7 @@ namespace HRMS.Data
         public virtual ICollection<LeaveType> LeaveTypes1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLeave> UserLeaves { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserDetail> UserDetails { get; set; }
     }
 }

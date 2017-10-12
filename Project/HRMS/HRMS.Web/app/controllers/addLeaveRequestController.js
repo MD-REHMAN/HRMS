@@ -60,7 +60,6 @@
         $scope.addOrEditLeaveType = function () {
 
             $scope.addLeaveRequestModel.ApprovedBy = localStorageService.get('loggedInUser').UserID;
-            $scope.addLeaveRequestModel.IsApproved = false;
             $scope.addLeaveRequestModel.CreatedBy = localStorageService.get('loggedInUser').UserID;
             $scope.addLeaveRequestModel.CreatedDate = new Date();
             $scope.addLeaveRequestModel.UpdatedBy = localStorageService.get('loggedInUser').UserID;

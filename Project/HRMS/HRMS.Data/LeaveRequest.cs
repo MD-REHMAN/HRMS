@@ -19,7 +19,7 @@ namespace HRMS.Data
         public string Reason { get; set; }
         public System.DateTime DateFrom { get; set; }
         public int NumberOfDays { get; set; }
-        public bool IsApproved { get; set; }
+        public Nullable<bool> IsApproved { get; set; }
         public string ApprovedBy { get; set; }
         public bool IsActive { get; set; }
         public string CreatedBy { get; set; }

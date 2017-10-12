@@ -12,6 +12,7 @@ using HRMS.Data;
 
 namespace HRMS.Api.Controllers
 {
+    [RoutePrefix("api/UserWeb")]
     public class UsersWebController : ApiController
     {
         private HRMSEntities db = new HRMSEntities();
@@ -102,9 +103,9 @@ namespace HRMS.Api.Controllers
 
         [Route("AddUserEntireDetail")]
         [HttpPost]
-        public IHttpActionResult AddUserEntireDetail(AddLeaveTypeUser data)
+        public IHttpActionResult AddUserEntireDetail(Models.AddUserEntireDetailModel data)
         {
-
+            return Ok();
         }
 
 

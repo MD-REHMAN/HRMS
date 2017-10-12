@@ -29,7 +29,7 @@
     <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DateFrom" Type="datetime" Nullable="false" />
     <Property Name="NumberOfDays" Type="int" Nullable="false" />
-    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" />
     <Property Name="ApprovedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
@@ -132,6 +132,22 @@
     <Property Name="UserDepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" />
     <Property Name="DepartmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="UserDetailID" />
+    </Key>
+    <Property Name="UserDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CompanyBranchID" Type="int" Nullable="false" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="256" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="64" />
+    <Property Name="AdhaarNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="PanNumber" Type="nvarchar" MaxLength="256" />
+    <Property Name="BankAccountNumber" Type="nvarchar" MaxLength="64" />
+    <Property Name="ProvidentFundNumber" Type="nvarchar" MaxLength="64" />
+    <Property Name="EsicNumber" Type="nvarchar" MaxLength="64" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="UserLeave">
     <Key>
@@ -390,6 +406,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__UserDetai__Compa__76969D2E">
+    <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="1" />
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyBranch">
+        <PropertyRef Name="CompanyBranchID" />
+      </Principal>
+      <Dependent Role="UserDetail">
+        <PropertyRef Name="CompanyBranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserDetai__UserI__75A278F5">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserDetail">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__UserLeave__Leave__6754599E">
     <End Role="LeaveType" Type="Self.LeaveType" Multiplicity="1" />
     <End Role="UserLeave" Type="Self.UserLeave" Multiplicity="*" />
@@ -449,6 +489,7 @@
     <EntitySet Name="SalaryComponentAmount" EntityType="Self.SalaryComponentAmount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserDepartment" EntityType="Self.UserDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLeave" EntityType="Self.UserLeave" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Departmen__Creat__1B0907CE" Association="Self.FK__Departmen__Creat__1B0907CE">
@@ -530,6 +571,14 @@
     <AssociationSet Name="FK__UserDepar__UserI__3A81B327" Association="Self.FK__UserDepar__UserI__3A81B327">
       <End Role="User" EntitySet="User" />
       <End Role="UserDepartment" EntitySet="UserDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserDetai__Compa__76969D2E" Association="Self.FK__UserDetai__Compa__76969D2E">
+      <End Role="CompanyBranch" EntitySet="CompanyBranch" />
+      <End Role="UserDetail" EntitySet="UserDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserDetai__UserI__75A278F5" Association="Self.FK__UserDetai__UserI__75A278F5">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserDetail" EntitySet="UserDetail" />
     </AssociationSet>
     <AssociationSet Name="FK__UserLeave__Leave__6754599E" Association="Self.FK__UserLeave__Leave__6754599E">
       <End Role="LeaveType" EntitySet="LeaveType" />

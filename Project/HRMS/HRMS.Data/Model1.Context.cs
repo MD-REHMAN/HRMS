@@ -37,5 +37,6 @@ namespace HRMS.Data
         public virtual DbSet<LeaveRequest> LeaveRequests { get; set; }
         public virtual DbSet<LeaveType> LeaveTypes { get; set; }
         public virtual DbSet<UserLeave> UserLeaves { get; set; }
+        public virtual DbSet<UserDetail> UserDetails { get; set; }
     }
 }

@@ -255,6 +255,7 @@
     <Compile Include="Controllers\SalaryComponentAmountsController.cs" />
     <Compile Include="Controllers\SalaryComponentsController.cs" />
     <Compile Include="Controllers\UserDepartmentsController.cs" />
+    <Compile Include="Controllers\UserDetailsController.cs" />
     <Compile Include="Controllers\UserLeavesController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -264,6 +265,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddUserEntireDetailModel.cs" />
     <Compile Include="Models\AddLeaveTypeUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

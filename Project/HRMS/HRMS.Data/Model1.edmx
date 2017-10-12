@@ -34,7 +34,7 @@
           <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DateFrom" Type="datetime" Nullable="false" />
           <Property Name="NumberOfDays" Type="int" Nullable="false" />
-          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" />
           <Property Name="ApprovedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
@@ -137,6 +137,22 @@
           <Property Name="UserDepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="nvarchar" MaxLength="128" />
           <Property Name="DepartmentID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserDetailID" />
+          </Key>
+          <Property Name="UserDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CompanyBranchID" Type="int" Nullable="false" />
+          <Property Name="ProfilePic" Type="nvarchar" MaxLength="256" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="64" />
+          <Property Name="AdhaarNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="PanNumber" Type="nvarchar" MaxLength="256" />
+          <Property Name="BankAccountNumber" Type="nvarchar" MaxLength="64" />
+          <Property Name="ProvidentFundNumber" Type="nvarchar" MaxLength="64" />
+          <Property Name="EsicNumber" Type="nvarchar" MaxLength="64" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="UserLeave">
           <Key>
@@ -395,6 +411,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserDetai__Compa__76969D2E">
+          <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyBranch">
+              <PropertyRef Name="CompanyBranchID" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="CompanyBranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserDetai__UserI__75A278F5">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__UserLeave__Leave__6754599E">
           <End Role="LeaveType" Type="Self.LeaveType" Multiplicity="1" />
           <End Role="UserLeave" Type="Self.UserLeave" Multiplicity="*" />
@@ -454,6 +494,7 @@
           <EntitySet Name="SalaryComponentAmount" EntityType="Self.SalaryComponentAmount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserDepartment" EntityType="Self.UserDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLeave" EntityType="Self.UserLeave" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Departmen__Creat__1B0907CE" Association="Self.FK__Departmen__Creat__1B0907CE">
@@ -536,6 +577,14 @@
             <End Role="User" EntitySet="User" />
             <End Role="UserDepartment" EntitySet="UserDepartment" />
           </AssociationSet>
+          <AssociationSet Name="FK__UserDetai__Compa__76969D2E" Association="Self.FK__UserDetai__Compa__76969D2E">
+            <End Role="CompanyBranch" EntitySet="CompanyBranch" />
+            <End Role="UserDetail" EntitySet="UserDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserDetai__UserI__75A278F5" Association="Self.FK__UserDetai__UserI__75A278F5">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDetail" EntitySet="UserDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK__UserLeave__Leave__6754599E" Association="Self.FK__UserLeave__Leave__6754599E">
             <End Role="LeaveType" EntitySet="LeaveType" />
             <End Role="UserLeave" EntitySet="UserLeave" />
@@ -564,6 +613,7 @@
           <Property Name="CompanyBranchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK__User__CompanyBra__145C0A3F" FromRole="CompanyBranch" ToRole="User" />
+          <NavigationProperty Name="UserDetails" Relationship="HRMSModel.FK__UserDetai__Compa__76969D2E" FromRole="CompanyBranch" ToRole="UserDetail" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -645,6 +695,7 @@
           <NavigationProperty Name="LeaveTypes" Relationship="HRMSModel.FK__LeaveType__Creat__5CD6CB2B" FromRole="User" ToRole="LeaveType" />
           <NavigationProperty Name="LeaveTypes1" Relationship="HRMSModel.FK__LeaveType__Updat__5DCAEF64" FromRole="User" ToRole="LeaveType" />
           <NavigationProperty Name="UserLeaves" Relationship="HRMSModel.FK__UserLeave__UserI__66603565" FromRole="User" ToRole="UserLeave" />
+          <NavigationProperty Name="UserDetails" Relationship="HRMSModel.FK__UserDetai__UserI__75A278F5" FromRole="User" ToRole="UserDetail" />
         </EntityType>
         <Association Name="FK__User__CompanyBra__145C0A3F">
           <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="1" />
@@ -814,6 +865,15 @@
           <AssociationSet Name="FK__UserLeave__UserI__66603565" Association="HRMSModel.FK__UserLeave__UserI__66603565">
             <End Role="User" EntitySet="Users" />
             <End Role="UserLeave" EntitySet="UserLeaves" />
+          </AssociationSet>
+          <EntitySet Name="UserDetails" EntityType="HRMSModel.UserDetail" />
+          <AssociationSet Name="FK__UserDetai__Compa__76969D2E" Association="HRMSModel.FK__UserDetai__Compa__76969D2E">
+            <End Role="CompanyBranch" EntitySet="CompanyBranches" />
+            <End Role="UserDetail" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserDetai__UserI__75A278F5" Association="HRMSModel.FK__UserDetai__UserI__75A278F5">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDetail" EntitySet="UserDetails" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="UserDepartment">
@@ -1015,7 +1075,7 @@
           <Property Name="Reason" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NumberOfDays" Type="Int32" Nullable="false" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" />
           <Property Name="ApprovedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -1149,6 +1209,48 @@
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="UserLeave">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserDetailID" />
+          </Key>
+          <Property Name="UserDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyBranchID" Type="Int32" Nullable="false" />
+          <Property Name="ProfilePic" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="AdhaarNumber" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PanNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BankAccountNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ProvidentFundNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="EsicNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CompanyBranch" Relationship="HRMSModel.FK__UserDetai__Compa__76969D2E" FromRole="UserDetail" ToRole="CompanyBranch" />
+          <NavigationProperty Name="User" Relationship="HRMSModel.FK__UserDetai__UserI__75A278F5" FromRole="UserDetail" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__UserDetai__Compa__76969D2E">
+          <End Type="HRMSModel.CompanyBranch" Role="CompanyBranch" Multiplicity="1" />
+          <End Type="HRMSModel.UserDetail" Role="UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyBranch">
+              <PropertyRef Name="CompanyBranchID" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="CompanyBranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserDetai__UserI__75A278F5">
+          <End Type="HRMSModel.User" Role="User" Multiplicity="1" />
+          <End Type="HRMSModel.UserDetail" Role="UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserDetail">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1318,6 +1420,23 @@
                 <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserLeaveID" ColumnName="UserLeaveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="HRMSModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetail">
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="EsicNumber" ColumnName="EsicNumber" />
+                <ScalarProperty Name="ProvidentFundNumber" ColumnName="ProvidentFundNumber" />
+                <ScalarProperty Name="BankAccountNumber" ColumnName="BankAccountNumber" />
+                <ScalarProperty Name="PanNumber" ColumnName="PanNumber" />
+                <ScalarProperty Name="AdhaarNumber" ColumnName="AdhaarNumber" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="CompanyBranchID" ColumnName="CompanyBranchID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserDetailID" ColumnName="UserDetailID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

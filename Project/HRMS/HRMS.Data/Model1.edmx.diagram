@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0c4e32474d1d493094d30a4966ec061c" Name="Diagram1" ZoomLevel="65">
+      <Diagram DiagramId="0c4e32474d1d493094d30a4966ec061c" Name="Diagram1" ZoomLevel="53">
         <EntityTypeShape EntityType="HRMSModel.CompanyBranch" Width="1.5" PointX="0.625" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRMSModel.Department" Width="1.5" PointX="0.625" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="HRMSModel.Role" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
@@ -41,6 +41,9 @@
         <AssociationConnector Association="HRMSModel.FK__LeaveType__Updat__5DCAEF64" />
         <AssociationConnector Association="HRMSModel.FK__UserLeave__Leave__6754599E" />
         <AssociationConnector Association="HRMSModel.FK__UserLeave__UserI__66603565" />
+        <EntityTypeShape EntityType="HRMSModel.UserDetail" Width="1.5" PointX="8.375" PointY="0.75" />
+        <AssociationConnector Association="HRMSModel.FK__UserDetai__Compa__76969D2E" />
+        <AssociationConnector Association="HRMSModel.FK__UserDetai__UserI__75A278F5" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

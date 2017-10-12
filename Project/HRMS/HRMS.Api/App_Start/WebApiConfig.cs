@@ -32,6 +32,7 @@ namespace HRMS.Api
             
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<User>("Users");
+            builder.EntitySet<UserDetail>("UserDetails");
             builder.EntitySet<Role>("Roles");
             builder.EntitySet<CompanyBranch>("CompanyBranches");
             builder.EntitySet<Department>("Departments");

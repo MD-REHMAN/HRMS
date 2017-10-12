@@ -163,5 +163,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="HRMSModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetail">
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="EsicNumber" ColumnName="EsicNumber" />
+          <ScalarProperty Name="ProvidentFundNumber" ColumnName="ProvidentFundNumber" />
+          <ScalarProperty Name="BankAccountNumber" ColumnName="BankAccountNumber" />
+          <ScalarProperty Name="PanNumber" ColumnName="PanNumber" />
+          <ScalarProperty Name="AdhaarNumber" ColumnName="AdhaarNumber" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+          <ScalarProperty Name="CompanyBranchID" ColumnName="CompanyBranchID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserDetailID" ColumnName="UserDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

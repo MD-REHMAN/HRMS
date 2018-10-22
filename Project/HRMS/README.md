@@ -1,2 +1,2 @@
 # HRMS
-A Project Create by: Raj and Rehman
+A Project Create by: Rehman
